@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.security.authentication;
+package org.springframework.security.authentication.hanlder;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,6 +28,13 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.core.log.LogMessage;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.authentication.AccountStatusException;
+import org.springframework.security.authentication.AuthenticationEventPublisher;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
+import org.springframework.security.authentication.exception.InternalAuthenticationServiceException;
+import org.springframework.security.authentication.exception.ProviderNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.CredentialsContainer;
@@ -36,52 +43,42 @@ import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
 /**
- * Iterates an {@link Authentication} request through a list of
- * {@link AuthenticationProvider}s.
+ * Iterates an {@link Authentication} request through a list of {@link AuthenticationProvider}s.
  *
  * <p>
  * <tt>AuthenticationProvider</tt>s are usually tried in order until one provides a
- * non-null response. A non-null response indicates the provider had authority to decide
- * on the authentication request and no further providers are tried. If a subsequent
- * provider successfully authenticates the request, the earlier authentication exception
- * is disregarded and the successful authentication will be used. If no subsequent
- * provider provides a non-null response, or a new <code>AuthenticationException</code>,
- * the last <code>AuthenticationException</code> received will be used. If no provider
- * returns a non-null response, or indicates it can even process an
+ * non-null response. A non-null response indicates the provider had authority to decide on the authentication request
+ * and no further providers are tried. If a subsequent provider successfully authenticates the request, the earlier
+ * authentication exception is disregarded and the successful authentication will be used. If no subsequent provider
+ * provides a non-null response, or a new <code>AuthenticationException</code>, the last
+ * <code>AuthenticationException</code> received will be used. If no provider returns a non-null response, or indicates
+ * it can even process an
  * <code>Authentication</code>, the <code>ProviderManager</code> will throw a
  * <code>ProviderNotFoundException</code>. A parent {@code AuthenticationManager} can also
- * be set, and this will also be tried if none of the configured providers can perform the
- * authentication. This is intended to support namespace configuration options though and
- * is not a feature that should normally be required.
+ * be set, and this will also be tried if none of the configured providers can perform the authentication. This is
+ * intended to support namespace configuration options though and is not a feature that should normally be required.
  * <p>
- * The exception to this process is when a provider throws an
- * {@link AccountStatusException}, in which case no further providers in the list will be
- * queried.
- *
- * Post-authentication, the credentials will be cleared from the returned
- * {@code Authentication} object, if it implements the {@link CredentialsContainer}
- * interface. This behaviour can be controlled by modifying the
- * {@link #setEraseCredentialsAfterAuthentication(boolean)
- * eraseCredentialsAfterAuthentication} property.
+ * The exception to this process is when a provider throws an {@link AccountStatusException}, in which case no further
+ * providers in the list will be queried.
+ * <p>
+ * Post-authentication, the credentials will be cleared from the returned {@code Authentication} object, if it
+ * implements the {@link CredentialsContainer} interface. This behaviour can be controlled by modifying the {@link
+ * #setEraseCredentialsAfterAuthentication(boolean) eraseCredentialsAfterAuthentication} property.
  *
  * <h2>Event Publishing</h2>
  * <p>
- * Authentication event publishing is delegated to the configured
- * {@link AuthenticationEventPublisher} which defaults to a null implementation which
- * doesn't publish events, so if you are configuring the bean yourself you must inject a
- * publisher bean if you want to receive events. The standard implementation is
- * {@link DefaultAuthenticationEventPublisher} which maps common exceptions to events (in
- * the case of authentication failure) and publishes an
- * {@link org.springframework.security.authentication.event.AuthenticationSuccessEvent
- * AuthenticationSuccessEvent} if authentication succeeds. If you are using the namespace
- * then an instance of this bean will be used automatically by the <tt>&lt;http&gt;</tt>
- * configuration, so you will receive events from the web part of your application
- * automatically.
+ * Authentication event publishing is delegated to the configured {@link AuthenticationEventPublisher} which defaults to
+ * a null implementation which doesn't publish events, so if you are configuring the bean yourself you must inject a
+ * publisher bean if you want to receive events. The standard implementation is {@link
+ * DefaultAuthenticationEventPublisher} which maps common exceptions to events (in the case of authentication failure)
+ * and publishes an {@link org.springframework.security.authentication.event.AuthenticationSuccessEvent
+ * AuthenticationSuccessEvent} if authentication succeeds. If you are using the namespace then an instance of this bean
+ * will be used automatically by the <tt>&lt;http&gt;</tt> configuration, so you will receive events from the web part
+ * of your application automatically.
  * <p>
- * Note that the implementation also publishes authentication failure events when it
- * obtains an authentication result (or an exception) from the "parent"
- * {@code AuthenticationManager} if one has been set. So in this situation, the parent
- * should not generally be configured to publish events or there will be duplicates.
+ * Note that the implementation also publishes authentication failure events when it obtains an authentication result
+ * (or an exception) from the "parent" {@code AuthenticationManager} if one has been set. So in this situation, the
+ * parent should not generally be configured to publish events or there will be duplicates.
  *
  * @author Ben Alex
  * @author Luke Taylor
@@ -99,10 +96,12 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 
 	private AuthenticationManager parent;
 
+	// 认证后是否擦除凭证信息
 	private boolean eraseCredentialsAfterAuthentication = true;
 
 	/**
 	 * Construct a {@link ProviderManager} using the given {@link AuthenticationProvider}s
+	 *
 	 * @param providers the {@link AuthenticationProvider}s to use
 	 */
 	public ProviderManager(AuthenticationProvider... providers) {
@@ -111,6 +110,7 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 
 	/**
 	 * Construct a {@link ProviderManager} using the given {@link AuthenticationProvider}s
+	 *
 	 * @param providers the {@link AuthenticationProvider}s to use
 	 */
 	public ProviderManager(List<AuthenticationProvider> providers) {
@@ -119,8 +119,9 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 
 	/**
 	 * Construct a {@link ProviderManager} using the provided parameters
+	 *
 	 * @param providers the {@link AuthenticationProvider}s to use
-	 * @param parent a parent {@link AuthenticationManager} to fall back to
+	 * @param parent    a parent {@link AuthenticationManager} to fall back to
 	 */
 	public ProviderManager(List<AuthenticationProvider> providers, AuthenticationManager parent) {
 		Assert.notNull(providers, "providers list cannot be null");
@@ -146,17 +147,17 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 	 * <p>
 	 * The list of {@link AuthenticationProvider}s will be successively tried until an
 	 * <code>AuthenticationProvider</code> indicates it is capable of authenticating the
-	 * type of <code>Authentication</code> object passed. Authentication will then be
-	 * attempted with that <code>AuthenticationProvider</code>.
+	 * type of <code>Authentication</code> object passed. Authentication will then be attempted with that
+	 * <code>AuthenticationProvider</code>.
 	 * <p>
 	 * If more than one <code>AuthenticationProvider</code> supports the passed
 	 * <code>Authentication</code> object, the first one able to successfully authenticate
-	 * the <code>Authentication</code> object determines the <code>result</code>,
-	 * overriding any possible <code>AuthenticationException</code> thrown by earlier
-	 * supporting <code>AuthenticationProvider</code>s. On successful authentication, no
-	 * subsequent <code>AuthenticationProvider</code>s will be tried. If authentication
-	 * was not successful by any supporting <code>AuthenticationProvider</code> the last
-	 * thrown <code>AuthenticationException</code> will be rethrown.
+	 * the <code>Authentication</code> object determines the <code>result</code>, overriding any possible
+	 * <code>AuthenticationException</code> thrown by earlier supporting <code>AuthenticationProvider</code>s. On
+	 * successful authentication, no subsequent <code>AuthenticationProvider</code>s will be tried. If authentication
+	 * was not successful by any supporting <code>AuthenticationProvider</code> the last thrown
+	 * <code>AuthenticationException</code> will be rethrown.
+	 *
 	 * @param authentication the authentication request object.
 	 * @return a fully authenticated object including credentials.
 	 * @throws AuthenticationException if authentication fails.
@@ -170,6 +171,7 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 		Authentication parentResult = null;
 		int currentPosition = 0;
 		int size = this.providers.size();
+		// 策略模式
 		for (AuthenticationProvider provider : getProviders()) {
 			if (!provider.supports(toTest)) {
 				continue;
@@ -184,14 +186,12 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 					copyDetails(authentication, result);
 					break;
 				}
-			}
-			catch (AccountStatusException | InternalAuthenticationServiceException ex) {
+			} catch (AccountStatusException | InternalAuthenticationServiceException ex) {
 				prepareException(ex, authentication);
 				// SEC-546: Avoid polling additional providers if auth failure is due to
 				// invalid account status
 				throw ex;
-			}
-			catch (AuthenticationException ex) {
+			} catch (AuthenticationException ex) {
 				lastException = ex;
 			}
 		}
@@ -200,14 +200,12 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 			try {
 				parentResult = this.parent.authenticate(authentication);
 				result = parentResult;
-			}
-			catch (ProviderNotFoundException ex) {
+			} catch (ProviderNotFoundException ex) {
 				// ignore as we will throw below if no other exception occurred prior to
 				// calling parent and the parent
 				// may throw ProviderNotFound even though a provider in the child already
 				// handled the request
-			}
-			catch (AuthenticationException ex) {
+			} catch (AuthenticationException ex) {
 				parentException = ex;
 				lastException = ex;
 			}
@@ -232,7 +230,7 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 		// Parent was null, or didn't authenticate (or throw an exception).
 		if (lastException == null) {
 			lastException = new ProviderNotFoundException(this.messages.getMessage("ProviderManager.providerNotFound",
-					new Object[] { toTest.getName() }, "No AuthenticationProvider found for {0}"));
+					new Object[]{toTest.getName()}, "No AuthenticationProvider found for {0}"));
 		}
 		// If the parent AuthenticationManager was attempted and failed then it will
 		// publish an AbstractAuthenticationFailureEvent
@@ -250,10 +248,11 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 	}
 
 	/**
-	 * Copies the authentication details from a source Authentication object to a
-	 * destination one, provided the latter does not already have one set.
+	 * Copies the authentication details from a source Authentication object to a destination one, provided the latter
+	 * does not already have one set.
+	 *
 	 * @param source source authentication
-	 * @param dest the destination authentication object
+	 * @param dest   the destination authentication object
 	 */
 	private void copyDetails(Authentication source, Authentication dest) {
 		if ((dest instanceof AbstractAuthenticationToken) && (dest.getDetails() == null)) {
@@ -277,12 +276,12 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 	}
 
 	/**
-	 * If set to, a resulting {@code Authentication} which implements the
-	 * {@code CredentialsContainer} interface will have its
-	 * {@link CredentialsContainer#eraseCredentials() eraseCredentials} method called
-	 * before it is returned from the {@code authenticate()} method.
-	 * @param eraseSecretData set to {@literal false} to retain the credentials data in
-	 * memory. Defaults to {@literal true}.
+	 * If set to, a resulting {@code Authentication} which implements the {@code CredentialsContainer} interface will
+	 * have its {@link CredentialsContainer#eraseCredentials() eraseCredentials} method called before it is returned
+	 * from the {@code authenticate()} method.
+	 *
+	 * @param eraseSecretData set to {@literal false} to retain the credentials data in memory. Defaults to {@literal
+	 *                        true}.
 	 */
 	public void setEraseCredentialsAfterAuthentication(boolean eraseSecretData) {
 		this.eraseCredentialsAfterAuthentication = eraseSecretData;

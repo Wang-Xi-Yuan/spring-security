@@ -16,7 +16,7 @@
 
 package org.springframework.security.config.annotation.web.configurers.oauth2.client;
 
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;

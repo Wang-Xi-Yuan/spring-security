@@ -29,6 +29,7 @@ import org.apache.commons.codec.binary.Base64;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.saml2.core.Saml2Error;
 import org.springframework.security.saml2.core.Saml2ErrorCodes;
 import org.springframework.security.saml2.core.Saml2ParameterNames;
@@ -42,7 +43,7 @@ import org.springframework.util.Assert;
 /**
  * An {@link AuthenticationConverter} that generates a {@link Saml2AuthenticationToken}
  * appropriate for authenticated a SAML 2.0 Assertion against an
- * {@link org.springframework.security.authentication.AuthenticationManager}.
+ * {@link AuthenticationManager}.
  *
  * @author Josh Cummings
  * @since 5.4

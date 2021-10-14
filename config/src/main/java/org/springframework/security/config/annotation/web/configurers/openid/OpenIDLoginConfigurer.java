@@ -27,7 +27,7 @@ import org.openid4java.consumer.ConsumerException;
 import org.openid4java.consumer.ConsumerManager;
 
 import org.springframework.security.authentication.AuthenticationDetailsSource;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -21,10 +21,10 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
 
-import org.springframework.security.authentication.AccountExpiredException;
-import org.springframework.security.authentication.CredentialsExpiredException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.LockedException;
+import org.springframework.security.authentication.exception.AccountExpiredException;
+import org.springframework.security.authentication.exception.CredentialsExpiredException;
+import org.springframework.security.authentication.exception.DisabledException;
+import org.springframework.security.authentication.exception.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;

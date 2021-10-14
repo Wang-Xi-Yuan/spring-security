@@ -48,7 +48,7 @@ import org.springframework.security.access.intercept.aopalliance.MethodSecurityM
 import org.springframework.security.access.intercept.aspectj.AspectJMethodSecurityInterceptor;
 import org.springframework.security.access.method.AbstractMethodSecurityMetadataSource;
 import org.springframework.security.access.method.MethodSecurityMetadataSource;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.config.test.SpringTestContext;
 import org.springframework.security.config.test.SpringTestContextExtension;
 import org.springframework.security.core.Authentication;

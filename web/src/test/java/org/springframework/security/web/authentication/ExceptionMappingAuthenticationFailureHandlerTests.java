@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

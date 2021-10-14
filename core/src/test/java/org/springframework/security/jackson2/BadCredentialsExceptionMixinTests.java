@@ -23,7 +23,7 @@ import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,7 +35,7 @@ public class BadCredentialsExceptionMixinTests extends AbstractMixinTests {
 
 	// @formatter:off
 	private static final String EXCEPTION_JSON = "{"
-		+ "\"@class\": \"org.springframework.security.authentication.BadCredentialsException\","
+		+ "\"@class\": \"org.springframework.security.authentication.exception.BadCredentialsException\","
 		+ "\"localizedMessage\": \"message\", "
 		+ "\"message\": \"message\", "
 		+ "\"suppressed\": [\"[Ljava.lang.Throwable;\",[]]"

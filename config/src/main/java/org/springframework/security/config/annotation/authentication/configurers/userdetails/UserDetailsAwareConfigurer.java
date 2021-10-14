@@ -16,7 +16,7 @@
 
 package org.springframework.security.config.annotation.authentication.configurers.userdetails;
 
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.authentication.ProviderManagerBuilder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

@@ -38,7 +38,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 import org.springframework.core.log.LogMessage;
 import org.springframework.security.authentication.AuthenticationEventPublisher;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;

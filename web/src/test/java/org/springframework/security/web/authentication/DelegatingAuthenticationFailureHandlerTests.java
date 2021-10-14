@@ -27,10 +27,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import org.springframework.security.authentication.AccountExpiredException;
+import org.springframework.security.authentication.exception.AccountExpiredException;
 import org.springframework.security.authentication.AccountStatusException;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.CredentialsExpiredException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
+import org.springframework.security.authentication.exception.CredentialsExpiredException;
 import org.springframework.security.core.AuthenticationException;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;

@@ -20,7 +20,7 @@ import java.io.Serializable;
 import java.security.Principal;
 import java.util.Collection;
 
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**

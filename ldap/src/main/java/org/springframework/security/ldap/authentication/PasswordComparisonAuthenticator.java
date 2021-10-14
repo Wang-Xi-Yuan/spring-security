@@ -23,7 +23,7 @@ import org.springframework.core.log.LogMessage;
 import org.springframework.ldap.NameNotFoundException;
 import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.ldap.core.support.BaseLdapPathContextSource;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

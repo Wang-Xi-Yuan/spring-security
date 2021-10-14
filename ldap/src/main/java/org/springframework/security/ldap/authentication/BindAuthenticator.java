@@ -29,7 +29,7 @@ import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.ldap.core.DistinguishedName;
 import org.springframework.ldap.core.support.BaseLdapPathContextSource;
 import org.springframework.ldap.support.LdapUtils;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.ldap.ppolicy.PasswordPolicyControl;

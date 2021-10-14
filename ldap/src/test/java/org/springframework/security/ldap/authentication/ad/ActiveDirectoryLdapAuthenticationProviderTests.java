@@ -37,12 +37,12 @@ import org.mockito.ArgumentCaptor;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.ldap.core.DirContextAdapter;
 import org.springframework.ldap.core.DistinguishedName;
-import org.springframework.security.authentication.AccountExpiredException;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.CredentialsExpiredException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
-import org.springframework.security.authentication.LockedException;
+import org.springframework.security.authentication.exception.AccountExpiredException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
+import org.springframework.security.authentication.exception.CredentialsExpiredException;
+import org.springframework.security.authentication.exception.DisabledException;
+import org.springframework.security.authentication.exception.InternalAuthenticationServiceException;
+import org.springframework.security.authentication.exception.LockedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider.ContextFactory;
@@ -304,7 +304,7 @@ public class ActiveDirectoryLdapAuthenticationProviderTests {
 		noneReachableProvider
 				.setContextEnvironmentProperties(Collections.singletonMap("com.sun.jndi.ldap.connect.timeout", "5"));
 		assertThatExceptionOfType(
-				org.springframework.security.authentication.InternalAuthenticationServiceException.class)
+				InternalAuthenticationServiceException.class)
 						.isThrownBy(() -> noneReachableProvider.doAuthentication(this.joe));
 	}
 

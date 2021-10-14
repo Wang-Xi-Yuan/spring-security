@@ -21,7 +21,7 @@ import java.util.Collection;
 
 import reactor.core.publisher.Mono;
 
-import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.exception.AuthenticationServiceException;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;

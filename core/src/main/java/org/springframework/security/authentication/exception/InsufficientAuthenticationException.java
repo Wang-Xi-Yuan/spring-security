@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.security.authentication;
+package org.springframework.security.authentication.exception;
 
 import org.springframework.security.core.AuthenticationException;
 

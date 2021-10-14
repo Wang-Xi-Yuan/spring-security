@@ -24,6 +24,13 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.context.MessageSource;
+import org.springframework.security.authentication.exception.AuthenticationServiceException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
+import org.springframework.security.authentication.exception.InternalAuthenticationServiceException;
+import org.springframework.security.authentication.exception.LockedException;
+import org.springframework.security.authentication.exception.ProviderNotFoundException;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.ProviderManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 

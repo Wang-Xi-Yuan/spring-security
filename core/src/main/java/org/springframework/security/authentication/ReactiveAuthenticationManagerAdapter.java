@@ -16,6 +16,7 @@
 
 package org.springframework.security.authentication;
 
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;

@@ -17,7 +17,7 @@
 package org.springframework.security.config.web.servlet
 
 import org.springframework.context.ApplicationContext
-import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.hanlder.AuthenticationManager
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
 import org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository

@@ -16,9 +16,11 @@
 
 package org.springframework.security.oauth2.server.resource.introspection;
 
+import org.springframework.security.authentication.exception.BadCredentialsException;
+
 /**
  * An exception similar to
- * {@link org.springframework.security.authentication.BadCredentialsException} that
+ * {@link BadCredentialsException} that
  * indicates an opaque token that is invalid in some way.
  *
  * @author Josh Cummings

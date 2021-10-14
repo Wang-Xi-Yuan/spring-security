@@ -22,7 +22,7 @@
 		</sec:filter-chain-map>
 	</bean>
 
-	<bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+	<bean id="authenticationManager" class="org.springframework.security.authentication.hanlder.ProviderManager">
 		<constructor-arg>
 			<list>
 			   <bean class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">

@@ -27,8 +27,8 @@ import org.springframework.beans.factory.BeanCreationException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.core.io.ClassPathResource
-import org.springframework.security.authentication.AuthenticationManager
-import org.springframework.security.authentication.ProviderManager
+import org.springframework.security.authentication.hanlder.AuthenticationManager
+import org.springframework.security.authentication.hanlder.ProviderManager
 import org.springframework.security.authentication.TestingAuthenticationProvider
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity

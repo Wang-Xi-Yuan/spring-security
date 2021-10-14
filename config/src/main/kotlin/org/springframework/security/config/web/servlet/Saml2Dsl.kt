@@ -16,7 +16,7 @@
 
 package org.springframework.security.config.web.servlet
 
-import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.hanlder.AuthenticationManager
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configurers.saml2.Saml2LoginConfigurer

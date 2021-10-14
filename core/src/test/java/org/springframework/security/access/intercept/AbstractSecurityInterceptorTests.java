@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
 
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.SecurityMetadataSource;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.util.SimpleMethodInvocation;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;

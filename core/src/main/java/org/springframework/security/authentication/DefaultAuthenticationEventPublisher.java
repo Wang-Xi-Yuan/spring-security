@@ -38,6 +38,13 @@ import org.springframework.security.authentication.event.AuthenticationFailurePr
 import org.springframework.security.authentication.event.AuthenticationFailureProxyUntrustedEvent;
 import org.springframework.security.authentication.event.AuthenticationFailureServiceExceptionEvent;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
+import org.springframework.security.authentication.exception.AccountExpiredException;
+import org.springframework.security.authentication.exception.AuthenticationServiceException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
+import org.springframework.security.authentication.exception.CredentialsExpiredException;
+import org.springframework.security.authentication.exception.DisabledException;
+import org.springframework.security.authentication.exception.LockedException;
+import org.springframework.security.authentication.exception.ProviderNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

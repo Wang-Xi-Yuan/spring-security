@@ -61,7 +61,7 @@
         </entry>
         <entry>
             <key>3782</key>
-            <value realName="spring-security-core.org.springframework.security.authentication.ProviderManager.authenticate(org.springframework.security.core.Authentication):org.springframework.security.core.Authentication" type="method" localSize="137" size="137" displayName="spring-security-core.org.springframework.security.authentication.ProviderManager.authenticate(org.springframework.security.core.Authentication):org.springframework.security.core.Authentication" navigationName="spring-security-core.org.springframework.security.authentication.ProviderManager.authenticate(org.springframework.security.core.Authentication):org.springframework.security.core.Authentication" isModule="false" isModuleInterface="false" isDeprecated="false"/>
+            <value realName="spring-security-core.org.springframework.security.authentication.hanlder.ProviderManager.authenticate(org.springframework.security.core.Authentication):org.springframework.security.core.Authentication" type="method" localSize="137" size="137" displayName="spring-security-core.org.springframework.security.authentication.hanlder.ProviderManager.authenticate(org.springframework.security.core.Authentication):org.springframework.security.core.Authentication" navigationName="spring-security-core.org.springframework.security.authentication.hanlder.ProviderManager.authenticate(org.springframework.security.core.Authentication):org.springframework.security.core.Authentication" isModule="false" isModuleInterface="false" isDeprecated="false"/>
         </entry>
         <entry>
             <key>40</key>

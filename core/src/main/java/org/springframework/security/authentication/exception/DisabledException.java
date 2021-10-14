@@ -14,25 +14,34 @@
  * limitations under the License.
  */
 
-package org.springframework.security.authentication;
+package org.springframework.security.authentication.exception;
 
-import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.authentication.AccountStatusException;
 
 /**
- * Thrown by {@link ProviderManager} if no {@link AuthenticationProvider} could be found
- * that supports the presented {@link org.springframework.security.core.Authentication}
- * object.
+ * Thrown if an authentication request is rejected because the account is disabled. Makes
+ * no assertion as to whether or not the credentials were valid.
  *
  * @author Ben Alex
  */
-public class ProviderNotFoundException extends AuthenticationException {
+public class DisabledException extends AccountStatusException {
 
 	/**
-	 * Constructs a <code>ProviderNotFoundException</code> with the specified message.
+	 * Constructs a <code>DisabledException</code> with the specified message.
 	 * @param msg the detail message
 	 */
-	public ProviderNotFoundException(String msg) {
+	public DisabledException(String msg) {
 		super(msg);
+	}
+
+	/**
+	 * Constructs a <code>DisabledException</code> with the specified message and root
+	 * cause.
+	 * @param msg the detail message
+	 * @param cause root cause
+	 */
+	public DisabledException(String msg, Throwable cause) {
+		super(msg, cause);
 	}
 
 }

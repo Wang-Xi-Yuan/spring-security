@@ -20,10 +20,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.springframework.security.authentication.exception.BadCredentialsException;
 
 /**
  * This mixin class helps in serialize/deserialize
- * {@link org.springframework.security.authentication.BadCredentialsException} class. To
+ * {@link BadCredentialsException} class. To
  * use this class you need to register it with
  * {@link com.fasterxml.jackson.databind.ObjectMapper}.
  *
@@ -45,7 +46,7 @@ class BadCredentialsExceptionMixin {
 
 	/**
 	 * Constructor used by Jackson to create
-	 * {@link org.springframework.security.authentication.BadCredentialsException} object.
+	 * {@link BadCredentialsException} object.
 	 * @param message the detail message
 	 */
 	@JsonCreator

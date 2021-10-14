@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 import org.springframework.ldap.core.support.BaseLdapPathContextSource;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;

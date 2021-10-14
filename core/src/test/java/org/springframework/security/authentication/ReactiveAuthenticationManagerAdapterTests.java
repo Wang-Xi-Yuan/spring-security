@@ -21,6 +21,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.authentication.exception.BadCredentialsException;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
@@ -39,7 +41,7 @@ import static org.mockito.BDDMockito.given;
 public class ReactiveAuthenticationManagerAdapterTests {
 
 	@Mock
-	AuthenticationManager delegate;
+  AuthenticationManager delegate;
 
 	@Mock
 	Authentication authentication;

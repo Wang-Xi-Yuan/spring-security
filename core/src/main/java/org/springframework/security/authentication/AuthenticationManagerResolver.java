@@ -16,10 +16,12 @@
 
 package org.springframework.security.authentication;
 
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
+
 /**
  * An interface for resolving an {@link AuthenticationManager} based on the provided
  * context
- *
+ * 基于提供的上下文解析AuthenticationManager的接口
  * @author Josh Cummings
  * @since 5.2
  */

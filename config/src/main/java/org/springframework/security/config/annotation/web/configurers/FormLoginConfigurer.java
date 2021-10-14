@@ -16,6 +16,7 @@
 
 package org.springframework.security.config.annotation.web.configurers;
 
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -55,7 +56,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
  * The following shared objects are used:
  *
  * <ul>
- * <li>{@link org.springframework.security.authentication.AuthenticationManager}</li>
+ * <li>{@link AuthenticationManager}</li>
  * <li>{@link RememberMeServices} - is optionally used. See {@link RememberMeConfigurer}
  * </li>
  * <li>{@link SessionAuthenticationStrategy} - is optionally used. See

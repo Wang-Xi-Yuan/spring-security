@@ -19,6 +19,7 @@ package org.springframework.security.web.authentication;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 
 /**
@@ -59,7 +60,7 @@ public interface RememberMeServices {
 	 * invalidated using the <code>HttpServletResponse</code> object.
 	 * <p>
 	 * The returned <code>Authentication</code> must be acceptable to
-	 * {@link org.springframework.security.authentication.AuthenticationManager} or
+	 * {@link AuthenticationManager} or
 	 * {@link org.springframework.security.authentication.AuthenticationProvider} defined
 	 * by the web application. It is recommended
 	 * {@link org.springframework.security.authentication.RememberMeAuthenticationToken}

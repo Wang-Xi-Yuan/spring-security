@@ -14,31 +14,33 @@
  * limitations under the License.
  */
 
-package org.springframework.security.authentication;
+package org.springframework.security.authentication.exception;
+
+import org.springframework.security.authentication.AccountStatusException;
 
 /**
- * Thrown if an authentication request is rejected because the account is disabled. Makes
- * no assertion as to whether or not the credentials were valid.
+ * Thrown if an authentication request is rejected because the account's credentials have
+ * expired. Makes no assertion as to whether or not the credentials were valid.
  *
  * @author Ben Alex
  */
-public class DisabledException extends AccountStatusException {
+public class CredentialsExpiredException extends AccountStatusException {
 
 	/**
-	 * Constructs a <code>DisabledException</code> with the specified message.
+	 * Constructs a <code>CredentialsExpiredException</code> with the specified message.
 	 * @param msg the detail message
 	 */
-	public DisabledException(String msg) {
+	public CredentialsExpiredException(String msg) {
 		super(msg);
 	}
 
 	/**
-	 * Constructs a <code>DisabledException</code> with the specified message and root
-	 * cause.
+	 * Constructs a <code>CredentialsExpiredException</code> with the specified message
+	 * and root cause.
 	 * @param msg the detail message
 	 * @param cause root cause
 	 */
-	public DisabledException(String msg, Throwable cause) {
+	public CredentialsExpiredException(String msg, Throwable cause) {
 		super(msg, cause);
 	}
 

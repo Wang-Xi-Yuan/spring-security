@@ -16,9 +16,11 @@
 
 package org.springframework.security.oauth2.jwt;
 
+import org.springframework.security.authentication.exception.BadCredentialsException;
+
 /**
  * An exception similar to
- * {@link org.springframework.security.authentication.BadCredentialsException} that
+ * {@link BadCredentialsException} that
  * indicates a {@link Jwt} that is invalid in some way.
  *
  * @author Josh Cummings

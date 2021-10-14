@@ -32,7 +32,7 @@ import org.mockito.ArgumentCaptor;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.jaas.event.JaasAuthenticationFailedEvent;

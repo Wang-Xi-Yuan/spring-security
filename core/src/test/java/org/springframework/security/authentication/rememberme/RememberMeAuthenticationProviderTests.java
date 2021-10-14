@@ -18,7 +18,7 @@ package org.springframework.security.authentication.rememberme;
 
 import org.junit.jupiter.api.Test;
 
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
 import org.springframework.security.authentication.RememberMeAuthenticationProvider;
 import org.springframework.security.authentication.RememberMeAuthenticationToken;
 import org.springframework.security.authentication.TestingAuthenticationToken;

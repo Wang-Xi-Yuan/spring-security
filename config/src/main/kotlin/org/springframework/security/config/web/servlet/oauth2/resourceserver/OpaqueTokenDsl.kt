@@ -16,7 +16,7 @@
 
 package org.springframework.security.config.web.servlet.oauth2.resourceserver
 
-import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.hanlder.AuthenticationManager
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer
 import org.springframework.security.core.Authentication

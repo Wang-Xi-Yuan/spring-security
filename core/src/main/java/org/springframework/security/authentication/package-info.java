@@ -19,9 +19,9 @@
  * Spring Security.
  * <p>
  * Of key importance is the
- * {@link org.springframework.security.authentication.AuthenticationManager
+ * {@link org.springframework.security.authentication.hanlder.AuthenticationManager
  * AuthenticationManager} and its default implementation
- * {@link org.springframework.security.authentication.ProviderManager ProviderManager},
+ * {@link org.springframework.security.authentication.hanlder.ProviderManager ProviderManager},
  * which maintains a list
  * {@link org.springframework.security.authentication.AuthenticationProvider
  * AuthenticationProvider}s to which it delegates authentication requests.

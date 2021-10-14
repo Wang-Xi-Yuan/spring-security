@@ -32,7 +32,7 @@ import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.access.intercept.MethodInvocationPrivilegeEvaluator;
 import org.springframework.security.access.intercept.aopalliance.MethodSecurityInterceptor;
 import org.springframework.security.access.method.MethodSecurityMetadataSource;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.util.MethodInvocationUtils;

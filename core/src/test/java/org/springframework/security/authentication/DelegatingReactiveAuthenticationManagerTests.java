@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.authentication.exception.BadCredentialsException;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
@@ -72,7 +73,8 @@ public class DelegatingReactiveAuthenticationManagerTests {
 		given(this.delegate1.authenticate(any())).willReturn(Mono.error(new BadCredentialsException("Test")));
 		DelegatingReactiveAuthenticationManager manager = new DelegatingReactiveAuthenticationManager(this.delegate1,
 				this.delegate2);
-		StepVerifier.create(manager.authenticate(this.authentication)).expectError(BadCredentialsException.class)
+		StepVerifier.create(manager.authenticate(this.authentication)).expectError(
+            BadCredentialsException.class)
 				.verify();
 	}
 

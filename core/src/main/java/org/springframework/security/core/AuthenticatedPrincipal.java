@@ -16,7 +16,7 @@
 
 package org.springframework.security.core;
 
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 
 /**
  * Representation of an authenticated <code>Principal</code> once an

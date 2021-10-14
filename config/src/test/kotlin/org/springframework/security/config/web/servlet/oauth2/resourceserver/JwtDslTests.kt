@@ -26,8 +26,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.core.convert.converter.Converter
 import org.springframework.security.authentication.AbstractAuthenticationToken
-import org.springframework.security.authentication.AuthenticationManager
-import org.springframework.security.authentication.ProviderManager
+import org.springframework.security.authentication.hanlder.AuthenticationManager
+import org.springframework.security.authentication.hanlder.ProviderManager
 import org.springframework.security.authentication.TestingAuthenticationProvider
 import org.springframework.security.authentication.TestingAuthenticationToken
 import org.springframework.security.config.annotation.web.builders.HttpSecurity

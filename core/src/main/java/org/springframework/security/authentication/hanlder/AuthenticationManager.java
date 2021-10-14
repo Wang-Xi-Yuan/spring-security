@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
-package org.springframework.security.authentication;
+package org.springframework.security.authentication.hanlder;
 
+import org.springframework.security.authentication.exception.BadCredentialsException;
+import org.springframework.security.authentication.exception.DisabledException;
+import org.springframework.security.authentication.exception.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
 /**
  * Processes an {@link Authentication} request.
- *
+ * 处理认证请求
  * @author Ben Alex
  */
 public interface AuthenticationManager {

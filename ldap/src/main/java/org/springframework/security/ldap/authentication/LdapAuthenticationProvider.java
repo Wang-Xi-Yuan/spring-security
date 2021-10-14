@@ -20,9 +20,9 @@ import java.util.Collection;
 
 import org.springframework.ldap.NamingException;
 import org.springframework.ldap.core.DirContextOperations;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
-import org.springframework.security.authentication.LockedException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
+import org.springframework.security.authentication.exception.InternalAuthenticationServiceException;
+import org.springframework.security.authentication.exception.LockedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

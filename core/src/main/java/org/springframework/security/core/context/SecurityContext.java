@@ -23,7 +23,7 @@ import org.springframework.security.core.Authentication;
 /**
  * Interface defining the minimum security information associated with the current thread
  * of execution.
- *
+ * 与线程绑定具有最小权限信息上下文
  * <p>
  * The security context is stored in a {@link SecurityContextHolder}.
  * </p>

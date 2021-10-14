@@ -16,20 +16,21 @@
 
 package org.springframework.security.authentication;
 
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 
 /**
  * Indicates a class can process a specific
  * {@link org.springframework.security.core.Authentication} implementation.
- *
+ * 主要用来进行认证操作的类 调用其中的authenticate()方法去进行认证操作
  * @author Ben Alex
  */
 public interface AuthenticationProvider {
 
 	/**
 	 * Performs authentication with the same contract as
-	 * {@link org.springframework.security.authentication.AuthenticationManager#authenticate(Authentication)}
+	 * {@link AuthenticationManager#authenticate(Authentication)}
 	 * .
 	 * @param authentication the authentication request object.
 	 * @return a fully authenticated object including credentials. May return

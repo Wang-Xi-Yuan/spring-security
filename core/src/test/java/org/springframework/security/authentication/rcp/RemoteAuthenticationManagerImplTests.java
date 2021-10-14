@@ -18,8 +18,8 @@ package org.springframework.security.authentication.rcp;
 
 import org.junit.jupiter.api.Test;
 
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.hanlder.AuthenticationManager;
+import org.springframework.security.authentication.exception.BadCredentialsException;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.Authentication;
 

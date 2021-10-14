@@ -18,12 +18,12 @@ package org.springframework.security.access;
 
 import java.util.Collection;
 
-import org.springframework.security.authentication.InsufficientAuthenticationException;
+import org.springframework.security.authentication.exception.InsufficientAuthenticationException;
 import org.springframework.security.core.Authentication;
 
 /**
  * Makes a final access control (authorization) decision.
- *
+ * 做出最终的访问控制(授权)决策
  * @author Ben Alex
  */
 public interface AccessDecisionManager {

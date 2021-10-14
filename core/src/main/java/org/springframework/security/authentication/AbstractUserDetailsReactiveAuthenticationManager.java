@@ -18,6 +18,11 @@ package org.springframework.security.authentication;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.security.authentication.exception.AccountExpiredException;
+import org.springframework.security.authentication.exception.BadCredentialsException;
+import org.springframework.security.authentication.exception.CredentialsExpiredException;
+import org.springframework.security.authentication.exception.DisabledException;
+import org.springframework.security.authentication.exception.LockedException;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;

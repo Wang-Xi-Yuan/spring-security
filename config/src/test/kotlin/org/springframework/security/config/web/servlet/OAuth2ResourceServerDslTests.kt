@@ -27,7 +27,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.BeanCreationException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
-import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.hanlder.AuthenticationManager
 import org.springframework.security.authentication.AuthenticationManagerResolver
 import org.springframework.security.authentication.TestingAuthenticationToken
 import org.springframework.security.config.annotation.web.builders.HttpSecurity

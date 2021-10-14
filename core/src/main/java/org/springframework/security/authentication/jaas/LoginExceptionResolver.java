@@ -18,6 +18,7 @@ package org.springframework.security.authentication.jaas;
 
 import javax.security.auth.login.LoginException;
 
+import org.springframework.security.authentication.exception.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 
 /**
@@ -26,7 +27,7 @@ import org.springframework.security.core.AuthenticationException;
  * For instance, a configured login module could throw a ScrewedUpPasswordException that
  * extends LoginException, in this instance the LoginExceptionResolver implementation
  * would return a
- * {@link org.springframework.security.authentication.BadCredentialsException}.
+ * {@link BadCredentialsException}.
  *
  * @author Ray Krueger
  */
