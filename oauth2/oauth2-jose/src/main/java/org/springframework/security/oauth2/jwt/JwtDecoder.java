@@ -26,6 +26,8 @@ package org.springframework.security.oauth2.jwt;
  * (JWE) structure. Therefore, implementors are responsible for verifying a JWS and/or
  * decrypting a JWE.
  *
+ * 该接口的实现负责将JSON Web令牌(JWT)从其紧凑声明表示格式“解码”为JWT。 jwt可以使用JWS Compact Serialization格式表示JSON Web签名(JWS)结构，也可以使用JWE Compact   Serialization格式表示JSON Web加密(JWE)结构。因此，实现者负责验证JWS和/或解密JWE。
+ *
  * @author Joe Grandja
  * @since 5.0
  * @see Jwt

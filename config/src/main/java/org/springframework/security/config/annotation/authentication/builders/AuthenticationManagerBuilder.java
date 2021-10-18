@@ -123,6 +123,8 @@ public class AuthenticationManagerBuilder
 	 * {@link UserDetailsService}'s may override this {@link UserDetailsService} as the
 	 * default.
 	 * </p>
+	 *
+	 * 将内存身份验证添加到AuthenticationManagerBuilder中，并返回一个InMemoryUserDetailsManagerConfigurer以允许自定义内存身份验证。 此方法还确保UserDetailsService对getDefaultUserDetailsService()方法可用。注意，附加的UserDetailsService可能会覆盖这个UserDetailsService作为默认值。
 	 * @return a {@link InMemoryUserDetailsManagerConfigurer} to allow customization of
 	 * the in memory authentication
 	 * @throws Exception if an error occurs when adding the in memory authentication

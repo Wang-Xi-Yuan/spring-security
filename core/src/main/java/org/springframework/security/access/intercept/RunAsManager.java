@@ -55,7 +55,7 @@ import org.springframework.security.core.Authentication;
  * only accepts <code>Authentication</code> objects created by an authorized concrete
  * implementation of <code>RunAsManager</code>.
  * </p>
- *
+ *  仅为当前安全对象调用创建一个新的临时身份验证对象。 此接口允许实现替换仅应用于当前安全对象调用的Authentication对象。AbstractSecurityInterceptor将替换仅在安全对象回调期间保存在SecurityContext中的身份验证对象，并在回调结束时将其返回到原始身份验证对象。 这样就可以建立具有两层对象的系统。一层是面向公共的，具有正常的安全方法，授予的权限预计将由外部调用者持有。另一层是私有的，只能由公共面向层中的对象调用。这个私有层中的对象仍然需要安全性(否则它们将是公共方法)，而且它们还需要防止它们被外部调用者直接调用的安全性。私有层中的对象将被配置为需要未授予外部调用者的授权。RunAsManager接口提供了一种以这种方式提高安全性的机制。 预期实现将提供相应的具体身份验证和AuthenticationProvider，以便替换的身份验证对象能够被身份验证。需要实现某种形式的安全性，以确保AuthenticationProvider只接受由RunAsManager的授权具体实现创建的身份验证对象。
  * @author Ben Alex
  */
 public interface RunAsManager {

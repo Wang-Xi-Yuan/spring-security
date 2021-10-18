@@ -58,11 +58,13 @@ import org.springframework.web.filter.CorsFilter;
 
 @SuppressWarnings("serial")
 final class FilterOrderRegistration {
-
+	// 初始order顺序
 	private static final int INITIAL_ORDER = 100;
 
+	// 步进
 	private static final int ORDER_STEP = 100;
 
+	// spring security 自带的过滤器按顺序构建缓存
 	private final Map<String, Integer> filterToOrder = new HashMap<>();
 
 	FilterOrderRegistration() {

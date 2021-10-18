@@ -45,7 +45,7 @@ import org.springframework.web.util.HtmlUtils;
  * instead.
  *
  * Will only work if a redirect is used to the login page.
- *
+ * 在用户没有配置登录页面的情况下，内部使用名称空间配置。配置代码将把这个过滤器插入链中。仅在重定向到登录页面时有效。
  * @author Luke Taylor
  * @since 2.0
  */

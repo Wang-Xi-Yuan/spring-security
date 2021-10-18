@@ -39,7 +39,8 @@ import org.springframework.util.Assert;
  * If the header is missing from the request, {@code getPreAuthenticatedPrincipal} will
  * throw an exception. You can override this behaviour by setting the
  * {@code exceptionIfHeaderMissing} property.
- *
+ * 一个简单的预认证过滤器，从请求头获取用户名，用于CA Siteminder等系统。
+ * 与大多数预身份验证场景一样，正确设置外部身份验证系统非常重要，因为该过滤器不进行任何身份验证。假设所有的保护都是在外部提供的，如果配置中不适当地包含了这个过滤器，那么可以通过设置正确的头文件名称来假定用户的身份。这也意味着它通常不应该与其他Spring Security身份验证机制(如表单登录)结合使用，因为这意味着存在绕过外部系统的方法，这是有风险的。 属性principalRequestHeader是包含用户名的请求头的名称。为了与Siteminder兼容，默认为“SM_USER”。 如果请求中没有报头，getPreAuthenticatedPrincipal将抛出异常。您可以通过设置exceptionIfHeaderMissing属性来覆盖此行为。
  * @author Luke Taylor
  * @since 2.0
  */

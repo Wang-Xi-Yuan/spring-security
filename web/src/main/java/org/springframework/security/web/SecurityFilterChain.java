@@ -27,6 +27,8 @@ import javax.servlet.http.HttpServletRequest;
  * <p>
  * Used to configure a {@code FilterChainProxy}.
  *
+ * 定义一个过滤器链，它能够被匹配到一个HttpServletRequest。以决定是否适用于该请求。
+ * 用于配置FilterChainProxy。
  * @author Luke Taylor
  * @since 3.1
  */

@@ -36,6 +36,10 @@ import org.springframework.security.core.GrantedAuthority;
  * {@link org.springframework.security.core.userdetails.User} for a reference
  * implementation (which you might like to extend or use in your code).
  *
+ * 提供核心用户信息。 出于安全目的，Spring Security不会直接使用实现。它们只是存储用户信息，稍后封装到Authentication对象中。
+ * 这允许非安全相关的用户信息(如电子邮件地址，电话号码等)存储在一个方   便的位置。 具体的实现必须特别小心，以确保每个方法的非空契约都得到执行。
+ * 请参阅User获取参考实现(您可能想在代码中扩展或使用该实现)
+ *
  * @author Ben Alex
  * @see UserDetailsService
  * @see UserCache

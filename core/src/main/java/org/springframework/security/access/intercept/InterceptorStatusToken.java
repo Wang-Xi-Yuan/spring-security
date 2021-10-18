@@ -28,6 +28,7 @@ import org.springframework.security.core.context.SecurityContext;
  * {@link org.springframework.security.access.intercept.AbstractSecurityInterceptor#afterInvocation(InterceptorStatusToken, Object)}
  * can tidy up correctly.
  *
+ * 这个类反映了安全拦截的状态，以便最终调用AbstractSecurityInterceptor.afterInvocation(InterceptorStatusToken, Object)可以正确地清理。
  * @author Ben Alex
  */
 public class InterceptorStatusToken {

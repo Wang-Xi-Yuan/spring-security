@@ -68,6 +68,8 @@ public interface HttpSecurityBuilder<H extends HttpSecurityBuilder<H>>
 
 	/**
 	 * Sets an object that is shared by multiple {@link SecurityConfigurer}.
+	 *
+	 * 设置一个由多个安全配置程序共享的对象。
 	 * @param sharedType the Class to key the shared object by.
 	 * @param object the Object to store
 	 */

@@ -39,6 +39,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
 public class ObjectPostProcessorConfiguration {
 
+	/**
+	 * 将构建的bean交给spring容器管理，这是给spring security框架使用
+	 * @param beanFactory
+	 * @return
+	 */
 	@Bean
 	@Role(BeanDefinition.ROLE_INFRASTRUCTURE)
 	public ObjectPostProcessor<Object> objectPostProcessor(AutowireCapableBeanFactory beanFactory) {

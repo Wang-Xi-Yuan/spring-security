@@ -39,7 +39,7 @@ import org.springframework.security.core.Authentication;
  * <code>AccessDeniedException</code> will cause a rollback of the changes made by the
  * transaction.
  * </p>
- *
+ * 应该特别考虑在修改数据库的bean方法上使用AfterInvocationManager。通常，AfterInvocationManager与只读方法一起使用，如公共DomainObject.getById(id)。如果与修改数据库的方法一起使用，则应该使用事务管理器来确保任何AccessDeniedException将导致事务所做更改的回滚
  * @author Ben Alex
  */
 public interface AfterInvocationManager {

@@ -166,7 +166,11 @@ public class NimbusJwtDecoderTests {
 
 	@Test
 	public void decodeWhenIatClaimNullThenDoesNotThrowException() {
-		this.jwtDecoder.decode(SIGNED_JWT);
+		Jwt jwt = this.jwtDecoder.decode(SIGNED_JWT);
+		Map<String, Object> claims = jwt.getClaims();
+		for (String key : claims.keySet()) {
+			System.out.println(key + ":" + claims.get(key));
+		}
 	}
 
 	// gh-5457

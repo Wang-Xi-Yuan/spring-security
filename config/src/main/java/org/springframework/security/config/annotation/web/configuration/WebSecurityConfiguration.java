@@ -59,7 +59,7 @@ import org.springframework.util.Assert;
  * and exposing it as a {@link Configuration} or implementing
  * {@link WebSecurityConfigurer} and exposing it as a {@link Configuration}. This
  * configuration is imported when using {@link EnableWebSecurity}.
- *
+ * 使用WebSecurity创建FilterChainProxy，为Spring security执行基于web的安全。然后导出所需的bean。通过扩展WebSecurityConfigurerAdapter并将其公开为Configuration，或者  实现WebSecurityConfigurer并将其公开为Configuration，可以对WebSecurity进行定制。此配置在使用EnableWebSecurity时导入
  * @see EnableWebSecurity
  * @see WebSecurity
  * @author Rob Winch
@@ -97,6 +97,7 @@ public class WebSecurityConfiguration implements ImportAware, BeanClassLoaderAwa
 
 	/**
 	 * Creates the Spring Security Filter Chain
+	 * 创建Spring安全过滤器链
 	 * @return the {@link Filter} that represents the security filter chain
 	 * @throws Exception
 	 */

@@ -26,9 +26,9 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.Authentication;
 
 /**
- * Simple concrete implementation of
- * {@link org.springframework.security.access.AccessDecisionManager} that requires all
+ * Simple concrete implementation of {@link org.springframework.security.access.AccessDecisionManager} that requires all
  * voters to abstain or grant access.
+ * 全部同意
  */
 public class UnanimousBased extends AbstractAccessDecisionManager {
 
@@ -37,26 +37,24 @@ public class UnanimousBased extends AbstractAccessDecisionManager {
 	}
 
 	/**
-	 * This concrete implementation polls all configured {@link AccessDecisionVoter}s for
-	 * each {@link ConfigAttribute} and grants access if <b>only</b> grant (or abstain)
-	 * votes were received.
+	 * This concrete implementation polls all configured {@link AccessDecisionVoter}s for each {@link ConfigAttribute}
+	 * and grants access if <b>only</b> grant (or abstain) votes were received.
 	 * <p>
 	 * Other voting implementations usually pass the entire list of
 	 * <tt>ConfigAttribute</tt>s to the <code>AccessDecisionVoter</code>. This
-	 * implementation differs in that each <code>AccessDecisionVoter</code> knows only
-	 * about a single <code>ConfigAttribute</code> at a time.
+	 * implementation differs in that each <code>AccessDecisionVoter</code> knows only about a single
+	 * <code>ConfigAttribute</code> at a time.
 	 * <p>
-	 * If every <code>AccessDecisionVoter</code> abstained from voting, the decision will
-	 * be based on the {@link #isAllowIfAllAbstainDecisions()} property (defaults to
-	 * false).
+	 * If every <code>AccessDecisionVoter</code> abstained from voting, the decision will be based on the {@link
+	 * #isAllowIfAllAbstainDecisions()} property (defaults to false).
+	 *
 	 * @param authentication the caller invoking the method
-	 * @param object the secured object
-	 * @param attributes the configuration attributes associated with the method being
-	 * invoked
+	 * @param object         the secured object
+	 * @param attributes     the configuration attributes associated with the method being invoked
 	 * @throws AccessDeniedException if access is denied
 	 */
 	@Override
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> attributes)
 			throws AccessDeniedException {
 		int grant = 0;
@@ -67,14 +65,15 @@ public class UnanimousBased extends AbstractAccessDecisionManager {
 			for (AccessDecisionVoter voter : getDecisionVoters()) {
 				int result = voter.vote(authentication, object, singleAttributeList);
 				switch (result) {
-				case AccessDecisionVoter.ACCESS_GRANTED:
-					grant++;
-					break;
-				case AccessDecisionVoter.ACCESS_DENIED:
-					throw new AccessDeniedException(
-							this.messages.getMessage("AbstractAccessDecisionManager.accessDenied", "Access is denied"));
-				default:
-					break;
+					case AccessDecisionVoter.ACCESS_GRANTED:
+						grant++;
+						break;
+					case AccessDecisionVoter.ACCESS_DENIED:
+						throw new AccessDeniedException(
+								this.messages.getMessage("AbstractAccessDecisionManager.accessDenied",
+										"Access is denied"));
+					default:
+						break;
 				}
 			}
 		}

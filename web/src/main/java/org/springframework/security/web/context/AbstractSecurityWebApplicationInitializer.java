@@ -112,6 +112,7 @@ public abstract class AbstractSecurityWebApplicationInitializer implements WebAp
 			servletContext.addListener("org.springframework.security.web.session.HttpSessionEventPublisher");
 		}
 		servletContext.setSessionTrackingModes(getSessionTrackingModes());
+		// 通过delegatingFilterProxy代理FilterChainProxy
 		insertSpringSecurityFilterChain(servletContext);
 		afterSpringSecurityFilterChain(servletContext);
 	}

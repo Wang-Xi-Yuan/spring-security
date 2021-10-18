@@ -49,6 +49,7 @@ public final class CookieClearingLogoutHandler implements LogoutHandler {
 				String contextPath = request.getContextPath();
 				String cookiePath = StringUtils.hasText(contextPath) ? contextPath : "/";
 				cookie.setPath(cookiePath);
+				// 如果设置为0，则立即删除该Cookie。
 				cookie.setMaxAge(0);
 				cookie.setSecure(request.isSecure());
 				return cookie;

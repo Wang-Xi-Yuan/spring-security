@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Used by {@link org.springframework.security.web.FilterChainProxy} to handle an
  * <code>RequestRejectedException</code>.
- *
+ * 请求拒绝处理器
  * @author Leonard Brünings
  * @since 5.4
  */

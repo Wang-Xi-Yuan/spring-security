@@ -33,7 +33,7 @@ import org.springframework.security.access.intercept.RunAsManager;
  * <p>
  * Stored at runtime with other <code>ConfigAttribute</code>s for the same secure object
  * target.
- *
+ * 用户请求一个资源(通常是一个网络接口或者一个java方法)所需要的的角色会被封装成为一个ConfigAttribute对象
  * @author Ben Alex
  */
 public interface ConfigAttribute extends Serializable {
@@ -53,6 +53,8 @@ public interface ConfigAttribute extends Serializable {
 	 * @return a representation of the configuration attribute (or <code>null</code> if
 	 * the configuration attribute cannot be expressed as a <code>String</code> with
 	 * sufficient precision).
+	 *
+	 * 一般来说，角色名称都带有一个ROLE_前缀，而这个方法返回的字符串就是角色的名称
 	 */
 	String getAttribute();
 

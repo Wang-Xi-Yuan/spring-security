@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Default implementation of {@link RequestRejectedHandler} that simply rethrows the
  * exception.
- *
+ * 直接抛出异常
  * @author Leonard Brünings
  * @since 5.4
  */

@@ -182,9 +182,11 @@ public abstract class AbstractConfiguredSecurityBuilder<O, B extends SecurityBui
 				throw new IllegalStateException("Cannot apply " + configurer + " to already built object");
 			}
 			List<SecurityConfigurer<O, B>> configs = null;
+			// 配置类是否允许相同类型
 			if (this.allowConfigurersOfSameType) {
 				configs = this.configurers.get(clazz);
 			}
+			// 默认为false,说明每种类型的配置类只有1个
 			configs = (configs != null) ? configs : new ArrayList<>(1);
 			configs.add(configurer);
 			this.configurers.put(clazz, configs);

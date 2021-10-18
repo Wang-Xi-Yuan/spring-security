@@ -25,7 +25,7 @@ import org.springframework.web.server.WebFilter;
 /**
  * Defines a filter chain which is capable of being matched against a
  * {@link ServerWebExchange} in order to decide whether it applies to that request.
- *
+ * 。
  * @author Rob Winch
  * @since 5.0
  */

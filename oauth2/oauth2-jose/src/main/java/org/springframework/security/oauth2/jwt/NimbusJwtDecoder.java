@@ -75,7 +75,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * A low-level Nimbus implementation of {@link JwtDecoder} which takes a raw Nimbus
  * configuration.
- *
+ * JwtDecoder的一个低级的Nimbus实现，它采用一个原始的Nimbus配置。
  * @author Josh Cummings
  * @author Joe Grandja
  * @author Mykyta Bezverkhyi

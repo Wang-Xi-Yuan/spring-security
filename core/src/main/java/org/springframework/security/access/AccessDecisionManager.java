@@ -23,7 +23,7 @@ import org.springframework.security.core.Authentication;
 
 /**
  * Makes a final access control (authorization) decision.
- * 做出最终的访问控制(授权)决策
+ * 做出最终的访问控制(授权)决策，来决定访问是否被允许
  * @author Ben Alex
  */
 public interface AccessDecisionManager {

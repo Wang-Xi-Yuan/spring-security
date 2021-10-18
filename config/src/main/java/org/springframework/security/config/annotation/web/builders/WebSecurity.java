@@ -74,6 +74,9 @@ import org.springframework.web.filter.DelegatingFilterProxy;
  * exposing a {@link WebSecurityCustomizer} bean.
  * </p>
  *
+ * WebSecurity由WebSecurityConfiguration创建，以创建称为Spring安全过滤链(springSecurityFilterChain)的FilterChainProxy。
+ * springSecurityFilterChain是DelegatingFilterProxy委托给的过滤器。 对WebSecurity的定制可以通过创建一个websecurityconfigururer，重写WebSecurityConfigurerAdapter或者暴露一个WebSecurityCustomizer bean来实现。
+ *
  * @author Rob Winch
  * @author Evgeniy Cheban
  * @since 3.2
@@ -85,6 +88,9 @@ public final class WebSecurity extends AbstractConfiguredSecurityBuilder<Filter,
 
 	private final Log logger = LogFactory.getLog(getClass());
 
+	/**
+	 * 忽略的请求
+	 */
 	private final List<RequestMatcher> ignoredRequests = new ArrayList<>();
 
 	private final List<SecurityBuilder<? extends SecurityFilterChain>> securityFilterChainBuilders = new ArrayList<>();
@@ -279,11 +285,13 @@ public final class WebSecurity extends AbstractConfiguredSecurityBuilder<Filter,
 		int chainSize = this.ignoredRequests.size() + this.securityFilterChainBuilders.size();
 		List<SecurityFilterChain> securityFilterChains = new ArrayList<>(chainSize);
 		for (RequestMatcher ignoredRequest : this.ignoredRequests) {
+			// 每一个忽略的请求都构建对应的SecurityFilterChain
 			securityFilterChains.add(new DefaultSecurityFilterChain(ignoredRequest));
 		}
 		for (SecurityBuilder<? extends SecurityFilterChain> securityFilterChainBuilder : this.securityFilterChainBuilders) {
 			securityFilterChains.add(securityFilterChainBuilder.build());
 		}
+		// 将多个SecurityFilterChain过滤器链以代理的形式合并到filter中
 		FilterChainProxy filterChainProxy = new FilterChainProxy(securityFilterChains);
 		if (this.httpFirewall != null) {
 			filterChainProxy.setFirewall(this.httpFirewall);

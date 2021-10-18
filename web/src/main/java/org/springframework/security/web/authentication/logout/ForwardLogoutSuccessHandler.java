@@ -49,6 +49,7 @@ public class ForwardLogoutSuccessHandler implements LogoutSuccessHandler {
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
+		// 服务器端转发
 		request.getRequestDispatcher(this.targetUrl).forward(request, response);
 	}
 

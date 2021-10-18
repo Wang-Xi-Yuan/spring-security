@@ -25,13 +25,12 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.Authentication;
 
 /**
- * Simple concrete implementation of
- * {@link org.springframework.security.access.AccessDecisionManager} that uses a
+ * Simple concrete implementation of {@link org.springframework.security.access.AccessDecisionManager} that uses a
  * consensus-based approach.
  * <p>
- * "Consensus" here means majority-rule (ignoring abstains) rather than unanimous
- * agreement (ignoring abstains). If you require unanimity, please see
- * {@link UnanimousBased}.
+ * "Consensus" here means majority-rule (ignoring abstains) rather than unanimous agreement (ignoring abstains). If you
+ * require unanimity, please see {@link UnanimousBased}.
+ * 多数同意
  */
 public class ConsensusBased extends AbstractAccessDecisionManager {
 
@@ -42,24 +41,22 @@ public class ConsensusBased extends AbstractAccessDecisionManager {
 	}
 
 	/**
-	 * This concrete implementation simply polls all configured
-	 * {@link AccessDecisionVoter}s and upon completion determines the consensus of
-	 * granted against denied responses.
+	 * This concrete implementation simply polls all configured {@link AccessDecisionVoter}s and upon completion
+	 * determines the consensus of granted against denied responses.
 	 * <p>
-	 * If there were an equal number of grant and deny votes, the decision will be based
-	 * on the {@link #isAllowIfEqualGrantedDeniedDecisions()} property (defaults to true).
+	 * If there were an equal number of grant and deny votes, the decision will be based on the {@link
+	 * #isAllowIfEqualGrantedDeniedDecisions()} property (defaults to true).
 	 * <p>
-	 * If every <code>AccessDecisionVoter</code> abstained from voting, the decision will
-	 * be based on the {@link #isAllowIfAllAbstainDecisions()} property (defaults to
-	 * false).
-	 * @param authentication the caller invoking the method
-	 * @param object the secured object
-	 * @param configAttributes the configuration attributes associated with the method
-	 * being invoked
+	 * If every <code>AccessDecisionVoter</code> abstained from voting, the decision will be based on the {@link
+	 * #isAllowIfAllAbstainDecisions()} property (defaults to false).
+	 *
+	 * @param authentication   the caller invoking the method
+	 * @param object           the secured object
+	 * @param configAttributes the configuration attributes associated with the method being invoked
 	 * @throws AccessDeniedException if access is denied
 	 */
 	@Override
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes)
 			throws AccessDeniedException {
 		int grant = 0;
@@ -67,14 +64,14 @@ public class ConsensusBased extends AbstractAccessDecisionManager {
 		for (AccessDecisionVoter voter : getDecisionVoters()) {
 			int result = voter.vote(authentication, object, configAttributes);
 			switch (result) {
-			case AccessDecisionVoter.ACCESS_GRANTED:
-				grant++;
-				break;
-			case AccessDecisionVoter.ACCESS_DENIED:
-				deny++;
-				break;
-			default:
-				break;
+				case AccessDecisionVoter.ACCESS_GRANTED:
+					grant++;
+					break;
+				case AccessDecisionVoter.ACCESS_DENIED:
+					deny++;
+					break;
+				default:
+					break;
 			}
 		}
 		if (grant > deny) {

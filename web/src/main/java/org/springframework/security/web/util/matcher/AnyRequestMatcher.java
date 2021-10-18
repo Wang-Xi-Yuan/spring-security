@@ -26,6 +26,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 public final class AnyRequestMatcher implements RequestMatcher {
 
+	/**
+	 * 单例模式中饱汉模式
+	 */
 	public static final RequestMatcher INSTANCE = new AnyRequestMatcher();
 
 	private AnyRequestMatcher() {

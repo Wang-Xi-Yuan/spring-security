@@ -27,6 +27,8 @@ import org.springframework.security.core.Authentication;
  * responses, and making the final authorization decision) is performed by an
  * {@link org.springframework.security.access.AccessDecisionManager}.
  *
+ * 这是一个投票器，投票器会检查用户是否具备应用的角色，进而投出赞成，反对或者弃权票
+ * 比较用户具备的角色和请求资源所需的ConfigAttribute是否一致
  * @author Ben Alex
  */
 public interface AccessDecisionVoter<S> {
